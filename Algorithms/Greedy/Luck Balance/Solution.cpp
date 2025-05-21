@@ -17,38 +17,26 @@ vector<string> split(const string &);
 
 int luckBalance(int k, vector<vector<int>> contests) {
     int luck = 0;
-    if (k == 0) {
-        for (int i = 0; i < contests.size(); i++) {
-            if (contests[i][1] == 0) {
-                luck += contests[i][0];
-            }
-            else {
-                luck -= contests[i][0];
-            }
-        }
-        return luck;
-    }
-    
-    vector<int> max_contests(k, 0);
+    vector<int> important;
     for (int i = 0; i < contests.size(); i++) {
         if (contests[i][1] == 0) {
             luck += contests[i][0];
         }
         else {
-            auto min = min_element(max_contests.begin(), max_contests.end());
-            if (*min < contests[i][0]) {
-                luck -= *min;
-                *min = contests[i][0];
-            }
-            else {
-                luck -= contests[i][0];
-            }
+            important.push_back(contests[i][0]);
+        }
+    }
+
+    sort(important.begin(), important.end(), greater<int>());
+    for (int i = 0; i < important.size(); i++) {
+        if (i < k) {
+            luck += important[i];
+        }
+        else {
+            luck -= important[i];
         }
     }
     
-    for (int j = 0; j < k; j++) {
-        luck += max_contests[j];
-    }
     return luck;
 }
 
