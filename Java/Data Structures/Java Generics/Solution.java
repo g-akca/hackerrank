@@ -1,6 +1,3 @@
-package Java.Data Structures.Java Generics;
-
-public 
 import java.io.IOException;
 import java.lang.reflect.Method;
 
@@ -35,6 +32,4 @@ public class Solution {
         if(count > 1)System.out.println("Method overloading is not allowed!");
       
     }
-} Solution {
-    
 }
