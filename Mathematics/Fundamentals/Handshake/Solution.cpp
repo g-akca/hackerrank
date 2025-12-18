@@ -13,7 +13,11 @@ string rtrim(const string &);
  */
 
 int handshake(int n) {
-    return (n - 1) * n / 2;
+    int res = 0;
+    for (int i = n - 1; i > 0; i--) {
+        res += i;
+    }
+    return res;
 }
 
 int main()
